@@ -1,0 +1,5 @@
+export const INCREMENT_COUNT = 'INCREMENT_COUNT'
+export const DECREMENT_COUNT = 'DECREMENT_COUNT'
+export const USER_LOGIN = 'USER_LOGIN'
+export const USER_LOGOUT = 'USER_LOGOUT'
+export const CHECK_TOKEN = 'CHECK_TOKEN'
