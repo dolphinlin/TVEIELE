@@ -1,7 +1,7 @@
 // import Hello from '../components/Hello'
 // import State from '../components/State'
 import Index from '../components/Index'
-import News from '../components/News'
+// import News from '../components/News'
 import Login from '../components/Login'
 import Logout from '../components/Logout'
 import Regist from '../components/Regist'
@@ -16,15 +16,15 @@ import Activity from '../components/Activity'
 import Signup from '../components/Activity/signup'
 import IndexComp from '../components/Activity/indexComp'
 
+import News from '../components/News'
+import NewsSignup from '../components/News/signup'
+import NewsIndexComp from '../components/News/indexComp'
+
 export default [
   {
     path: '/',
     name: 'index',
     component: Index
-  }, {
-    path: '/news',
-    name: 'news',
-    component: News
   }, {
     path: '/map',
     name: 'map',
@@ -74,6 +74,22 @@ export default [
         path: 'signup',
         name: 'signup',
         component: Signup,
+        meta: {
+          requiresAuth: true
+        }
+      }
+    ]
+  }, {
+    path: '/news',
+    component: News,
+    children: [
+      {
+        path: '',
+        component: NewsIndexComp
+      }, {
+        path: 'signup',
+        name: 'newsUpload',
+        component: NewsSignup,
         meta: {
           requiresAuth: true
         }

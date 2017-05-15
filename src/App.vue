@@ -3,7 +3,7 @@
     <div class="top-bar"></div>
     <div class="container">
       <div class="content">
-        <img src="./assets/IELE-logo.png" alt="LOGO" style="width: 100%">
+        <img :src="banner" alt="LOGO" style="width: 100%">
         <navbar></navbar>
         <div class="container-fluid">
           <transition name="fade" mode="out-in">
@@ -22,6 +22,11 @@ import * as types from './store/mutations_types'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      banner: './assets/IELE-logo.png'
+    }
+  },
   computed: {
     routerPath () {
       return this.$store.state.route.path
@@ -35,6 +40,9 @@ export default {
   },
   components: {
     Navbar
+  },
+  mounted () {
+    this.getPageInfo()
   },
   methods: {
     checkToken () {
@@ -51,6 +59,11 @@ export default {
           console.log(err)
         })
       }
+    },
+    getPageInfo () {
+      this.$http.get('/apis/info').then((res) => {
+        this.banner = res.data.data.banner
+      })
     }
   },
   watch: {

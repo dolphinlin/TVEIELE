@@ -1,57 +1,36 @@
 <template lang="html">
-  <div class="container-fluid news">
+  <div class="container-fluid">
     <div class="row">
-      <div class="progress col-lg-6 col-lg-offset-3" v-if="!loading">
-        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      <div class="panel panel-primary" v-if="loading">
+      <div class="panel panel-primary">
         <!-- Default panel contents -->
-        <div class="panel-heading">技職教育學刊</div>
+        <div class="panel-heading">活動公告 - <strong>「技職教育學刊」徵稿啟事</strong></div>
         <!-- Table -->
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th width="20%">＃</th>
-              <th>期刊文件</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(journal, index) in journals">
-              <td><b>{{index + 1}}</b></td>
-              <td>
-                <a :href="procPath(journal.path)">{{journal.title}}</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <nav aria-label="Page navigation">
-              <ul class="pagination">
-                <li v-show="page.prev === 0 ? false:true">
-                  <a href="#" @click="getJournals(page.prev)" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
+        <pre>
+一、《技職教育學刊》(International Journal of Technological and Vocational Education Studies)為純學術性期刊，每年六月與十二月定期出刊，竭誠歡迎海內外學者賜稿，發表技職教育相關之學術研究論文。
+二、徵稿及出刊：
+本刊徵稿對象為國內外大專院校教師、研究生及學術研究機構之研究員。
+來稿以尚未發表於正式出版發行之學術性期刊論文為限，本刊不接受已通過之原學位論文，但若以原論題為基礎，進行重整或拓展者，則不在此限。
+來稿須具備「學術論文」之實證性、理論性、系統性，但若為翻譯文稿、作品賞析、報導性文章、教學講義、讀書心得等恕不接受。
+投稿方式：我要投稿。
+投稿本刊稿件經匿名審查人審查後，作者需依據審查意見進行修正。
+來稿皆需經編輯委員會送請兩位相關領域的專家學者評審，若審查意見相左時，則送第三位審查委員。
+來稿皆須附中文摘要，中文約 300 字，並在摘要之後列明 3-5 個關鍵詞。
+相關資料：「<a href="http://www.tve.yuntech.edu.tw:8080/file/1.doc">投稿規範</a>」、「<a href="http://www.tve.yuntech.edu.tw:8080/file/2.doc">投稿者資料表</a>」、「<a href="http://www.tve.yuntech.edu.tw:8080/file/3.doc">投稿者授權書</a>」
+徵稿主題
+（一）課程發展與教學設計
+（二）師資培育與專業發展
+（三）學校經營與行政管理
+（四）教育行政與領導
+（五）數位與新興科技創新教學
+（六）學生輔導及職業發展
+（七）技職教育政策與制度
+（八）技職人力發展與教育訓練
 
-                <li
-                v-for="p in page.total"
-                :class="p === page.current? 'active':''"
-                :key="p">
-                  <a href="#" @click.prevent="getJournals(p)">{{p}}</a>
-                </li>
-                <li v-show="page.current === page.total ? false:true">
-                  <a href="#" @click="getJournals(page.next)" aria-label="Next" >
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+<a href="http://www.tve.yuntech.edu.tw:8080/file/4.pdf">技職教育學刊第一卷第一期(創刊號)</a>
+
+        </pre>
       </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -60,27 +39,18 @@
 export default {
   data () {
     return {
+      title: '',
+      date: Date.now(),
+      organizer: '',
+      coorganizer: '',
+      place: '',
+      content: '',
       loading: false,
-      journals: [],
-      page: {}
-    }
-  },
-  mounted () {
-    this.getJournals(1)
-  },
-  methods: {
-    getJournals (page) {
-      this.loading = false
-      this.$http.get(`/apis/journal/${page}`)
-        .then((result) => {
-          this.journals = result.data.journals
-          this.page = result.data.page
-          this.loading = true
-        })
-    },
-    procPath (path) {
-      return `http://www.tve.yuntech.edu.tw:8080/${path.split('/').slice(1).join('/')}`
+      error: false
     }
   }
 }
 </script>
+
+<style lang="css">
+</style>

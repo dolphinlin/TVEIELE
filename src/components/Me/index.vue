@@ -69,7 +69,7 @@ export default {
       })
         .then((res) => {
           this.acts = res.data.data.acts
-          this.cons = res.data.data.cons
+          // this.cons = res.data.data.cons
         })
     }
   }
