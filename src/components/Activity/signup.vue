@@ -33,6 +33,10 @@
                 <input type="mail" class="form-control" id="email" placeholder="聯絡信箱" v-model="email" required>
               </div>
               <div class="form-group">
+                <label class="sr-only" for="unit">服務單位</label>
+                <input type="text" class="form-control" id="unit" placeholder="服務單位" v-model="unit" required>
+              </div>
+              <div class="form-group">
                 <p>
                   餐點葷素
                 </p>
@@ -67,6 +71,7 @@ export default {
       phone: '',
       email: '',
       food: 0,
+      unit: '',
       message: false
     }
   },
@@ -100,7 +105,8 @@ export default {
           ic: this.ic,
           phone: this.phone,
           email: this.email,
-          food: this.food
+          food: this.food,
+          unit: this.unit
         }).then((res) => {
           if (res.data.success) {
             window.alert('報名成功！')

@@ -52,7 +52,7 @@
               <br>
               <span class="glyphicon glyphicon-chevron-right text-success" aria-hidden="true"></span> 聯絡作者與電話
               <br>
-              (論文格式請參考附件 1,以 APA 第 6 版之寫作格式)。
+              (論文格式請參考 <a href="http://www.tve.yuntech.edu.tw:8080/file/format.pdf">附件1</a> ,以 APA 第 6 版之寫作格式)。
             </p>
           </blockquote>
         </div>

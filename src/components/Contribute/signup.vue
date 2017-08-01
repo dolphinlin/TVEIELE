@@ -10,8 +10,8 @@
         <input type="file" name="content" ref="content" required>
       </div>
       <div class="form-group">
-        <label for="briefing">簡報檔：</label>
-        <input type="file" name="briefing" ref="briefing" accept="application/vnd.ms-powerpoint" required>
+        <label for="briefing">簡報檔或海報內容(1頁A4)：</label>
+        <input type="file" name="briefing" ref="briefing" accept="application/vnd.ms-powerpoint,application/pdf" required>
       </div>
       <button class="btn btn-primary btn-block" @click.prevent="uploadfile">
         上傳
